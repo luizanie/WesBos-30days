@@ -37,6 +37,48 @@
   </div>
 
   <script>
+    // mouse events
+    // mousedown
+    // mouseleave
+    // mouseup
+    // mousemove
+
+    const slider = document.querySelector('.items');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('active');
+      //startX = where cursor click on item - offset element from left
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      slider.classList.remove('active');
+      isDown = false;
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return; //stop fn when mouseup or mouseleave 
+      e.preventDefault();
+      // where the cursor is
+      const cursorX = e.pageX - slider.offsetLeft;
+      // distance between start X and end point
+      const distance = cursorX - startX;
+      slider.scrollLeft = scrollLeft - distance;
+    });
+
+
+
   </script>
 
 </body>
