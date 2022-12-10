@@ -145,6 +145,7 @@
   </div>
 
   <script>
+    // runs function on every 'wait' sec
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function () {
@@ -159,6 +160,32 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+
+    const slideImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e) {
+      slideImages.forEach(slideImage => {
+        // scroll half way throug the image = how far we scroll measure at the bottom - half of the img height
+        const slideInAt = (window.scrollY + window.innerHeight) - slideImage.height / 2;
+        //bottom of the image = top of the img in the window + image height
+        const imageBottom = slideImage.offsetTop + slideImage.height;
+        //image half shown
+        const isHalfShown = slideInAt > slideImage.offsetTop;
+        // scrolled not past image
+        const isNotScrolledPast = window.scrollY < imageBottom;
+
+        if (isHalfShown && isNotScrolledPast) {
+          slideImage.classList.add('active');
+        }
+        else {
+          slideImage.classList.remove('active');
+        }
+      }
+      )
+    };
+
+    window.addEventListener('scroll', debounce(checkSlide));
 
   </script>
 
