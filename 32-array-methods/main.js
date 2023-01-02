@@ -50,5 +50,15 @@ function formatMoney(number) {
   return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' PLN';
 }
 
+//double money
+function doubleMoney(){
+  data = data.map((user)=>{
+    return {...user, money: user.money*2};
+  });
+  console.log('double');
+  displayUser();
+};
+
 // btn events
 btnAddUser.addEventListener('click', getRandomUser);
+btnDouble.addEventListener('click', doubleMoney);
