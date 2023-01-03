@@ -67,7 +67,15 @@ function sortWealth(){
   displayUser();
 };
 
+//filter by milionaires
+function ShowMillionaires(){
+  data = data.filter(user=>user.money>1000000);
+
+  displayUser();
+}
+
 // btn events
 btnAddUser.addEventListener('click', getRandomUser);
 btnDouble.addEventListener('click', doubleMoney);
 btnSort.addEventListener('click', sortWealth);
+btnShowMillionaires.addEventListener('click', ShowMillionaires);
