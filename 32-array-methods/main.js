@@ -59,6 +59,15 @@ function doubleMoney(){
   displayUser();
 };
 
+//sort users by richest
+function sortWealth(){
+  console.log('sort');
+  data.sort((a, b)=> b.money - a.money );
+
+  displayUser();
+};
+
 // btn events
 btnAddUser.addEventListener('click', getRandomUser);
 btnDouble.addEventListener('click', doubleMoney);
+btnSort.addEventListener('click', sortWealth);
