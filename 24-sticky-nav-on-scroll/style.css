@@ -24,7 +24,9 @@ body {
   transform: scale(0.98);
   transition: transform 0.5s;
 }
-
+body.fixed .site-wrap{
+  transform: scale(1);
+}
 header {
   text-align: center;
   height: 50vh;
@@ -76,6 +78,9 @@ li.logo {
   transition: all .5s;
   font-weight: 600;
   font-size: 30px;
+}
+body.fixed li.logo{
+  max-width: 100%;
 }
 
 li.logo a {
